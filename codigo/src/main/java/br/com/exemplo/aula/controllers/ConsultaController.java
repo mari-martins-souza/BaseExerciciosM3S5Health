@@ -34,31 +34,5 @@ public class ConsultaController {
         }
 
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ConsultaResponseDTO> search(@PathVariable long id) {
-        ConsultaResponseDTO response = consultaService.buscarConsulta(id);
-        if (response != null) {
-            return ResponseEntity.ok(response);
-        } else {
-            throw new RuntimeException("404");
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remove(@PathVariable long id) {
-        consultaService.removerConsulta(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ConsultaResponseDTO> update(@PathVariable long id, @RequestBody ConsultaRequestDTO request) {
-        ConsultaResponseDTO consulta = consultaService.atualizarConsulta(id, request);
-        if (consulta != null) {
-            return ResponseEntity.ok(consulta);
-        } else {
-            throw new RuntimeException("404");
-        }
-    }
     
 }
